@@ -10,9 +10,7 @@ Register | Volunteer Community Portal
 
     <div class="form-card">
 
-        <span class="eyebrow">
-            JOIN OUR COMMUNITY
-        </span>
+        <span class="eyebrow">JOIN OUR COMMUNITY</span>
 
         <h1>Create Your Account</h1>
 
@@ -20,186 +18,81 @@ Register | Volunteer Community Portal
             Join local initiatives and help make a difference.
         </p>
 
-
         <form method="POST" id="registerForm">
 
-            <label for="role">
-                Account Type *
-            </label>
+            <!-- ACCOUNT TYPE -->
+            <label for="role">Account Type *</label>
 
-            <select
-                id="role"
-                name="role"
-                required
-            >
-
-                <option
-                    value="volunteer"
-                    {% if selected_role == 'volunteer' %}
-                        selected
-                    {% endif %}
-                >
+            <select id="role" name="role" required>
+                <option value="volunteer"
+                    {% if selected_role == 'volunteer' %}selected{% endif %}>
                     Volunteer
                 </option>
-
-                <option
-                    value="organization"
-                    {% if selected_role == 'organization' %}
-                        selected
-                    {% endif %}
-                >
+                <option value="organization"
+                    {% if selected_role == 'organization' %}selected{% endif %}>
                     Organization
                 </option>
-
             </select>
 
+            <!-- COMMON FIELDS -->
+            <label for="full_name">Full Name *</label>
+            <input id="full_name" name="full_name" type="text"
+                   placeholder="Enter your full name" required>
 
-            <label for="full_name">
-                Full Name *
-            </label>
+            <label for="email">Email Address *</label>
+            <input id="email" name="email" type="email"
+                   placeholder="you@example.com" required>
 
-            <input
-                id="full_name"
-                name="full_name"
-                type="text"
-                placeholder="Enter your full name"
-                required
-            >
-
-
-            <label for="email">
-                Email Address *
-            </label>
-
-            <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="you@example.com"
-                required
-            >
+            <label for="password">Password *</label>
+            <input id="password" name="password" type="password"
+                   minlength="8" placeholder="At least 8 characters" required>
 
 
-            <label for="password">
-                Password *
-            </label>
-
-            <input
-                id="password"
-                name="password"
-                type="password"
-                minlength="8"
-                placeholder="At least 8 characters"
-                required
-            >
-
-
+            <!-- VOLUNTEER FIELDS -->
             <div id="volunteerFields">
 
-                <div class="field-divider">
-                    Volunteer Profile
-                </div>
+                <div class="field-divider">Volunteer Profile</div>
 
-                <label for="phone">
-                    Phone Number *
-                </label>
+                <label for="phone">Phone Number *</label>
+                <input id="phone" name="phone" type="tel"
+                       placeholder="Your phone number">
 
-                <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    placeholder="Your phone number"
-                >
+                <label for="skills">Skills</label>
+                <textarea id="skills" name="skills" rows="3"
+                          placeholder="e.g. teaching, design, first aid"></textarea>
 
-
-                <label for="skills">
-                    Skills
-                </label>
-
-                <textarea
-                    id="skills"
-                    name="skills"
-                    rows="3"
-                    placeholder="e.g. teaching, design, first aid"
-                ></textarea>
-
-
-                <label for="availability">
-                    Availability
-                </label>
-
-                <select
-                    id="availability"
-                    name="availability"
-                >
-
-                    <option value="">
-                        Choose availability
-                    </option>
-
+                <label for="availability">Availability</label>
+                <select id="availability" name="availability">
+                    <option value="">Choose availability</option>
                     <option>Weekdays</option>
                     <option>Weekends</option>
                     <option>Evenings</option>
                     <option>Flexible</option>
-
                 </select>
 
             </div>
 
 
+            <!-- ORGANIZATION FIELDS -->
             <div id="organizationFields" hidden>
 
-                <div class="field-divider">
-                    Organization Profile
-                </div>
+                <div class="field-divider">Organization Profile</div>
 
-                <label for="organization_name">
-                    Organization Name *
-                </label>
+                <label for="organization_name">Organization Name *</label>
+                <input id="organization_name" name="organization_name" type="text"
+                       placeholder="Organization name">
 
-                <input
-                    id="organization_name"
-                    name="organization_name"
-                    type="text"
-                    placeholder="Organization name"
-                >
+                <label for="contact_person">Contact Person *</label>
+                <input id="contact_person" name="contact_person" type="text"
+                       placeholder="Representative name">
 
+                <label for="organization_phone">Organization Phone</label>
+                <input id="organization_phone" name="organization_phone" type="tel"
+                       placeholder="Contact phone">
 
-                <label for="contact_person">
-                    Contact Person *
-                </label>
-
-                <input
-                    id="contact_person"
-                    name="contact_person"
-                    type="text"
-                    placeholder="Representative name"
-                >
-
-
-                <label for="organization_phone">
-                    Organization Phone
-                </label>
-
-                <input
-                    id="organization_phone"
-                    name="organization_phone"
-                    type="tel"
-                    placeholder="Contact phone"
-                >
-
-
-                <label for="purpose">
-                    Organization Purpose
-                </label>
-
-                <textarea
-                    id="purpose"
-                    name="purpose"
-                    rows="3"
-                    placeholder="Describe your community work"
-                ></textarea>
-
+                <label for="purpose">Organization Purpose</label>
+                <textarea id="purpose" name="purpose" rows="3"
+                          placeholder="Describe your community work"></textarea>
 
                 <p class="notice">
                     Organization accounts require administrator
@@ -208,29 +101,46 @@ Register | Volunteer Community Portal
 
             </div>
 
-
-            <button
-                class="button button-primary full-button"
-                type="submit"
-            >
+            <button class="button button-primary full-button" type="submit">
                 Create Account →
             </button>
 
         </form>
 
-
         <p class="form-bottom">
-
             Already registered?
-
-            <a href="{{ url_for('login') }}">
-                Log in here
-            </a>
-
+            <a href="{{ url_for('login') }}">Log in here</a>
         </p>
 
     </div>
 
 </section>
+
+
+<script>
+(function () {
+    const role = document.getElementById("role");
+    const volunteer = document.getElementById("volunteerFields");
+    const organization = document.getElementById("organizationFields");
+
+    function setSection(section, show, requiredIds) {
+        section.hidden = !show;
+        section.style.display = show ? "" : "none";
+        section.querySelectorAll("input, textarea, select").forEach(function (el) {
+            el.disabled = !show;
+            el.required = show && requiredIds.indexOf(el.id) !== -1;
+        });
+    }
+
+    function update() {
+        const isOrg = role.value === "organization";
+        setSection(volunteer, !isOrg, ["phone"]);
+        setSection(organization, isOrg, ["organization_name", "contact_person"]);
+    }
+
+    role.addEventListener("change", update);
+    update();
+})();
+</script>
 
 {% endblock %}
